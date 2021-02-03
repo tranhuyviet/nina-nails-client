@@ -1,5 +1,5 @@
 import { CssBaseline } from '@material-ui/core';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import NavBar from './components/NavBar/NavBar';
 import AboutPage from './pages/AboutPage/AboutPage';
@@ -15,6 +15,7 @@ function App() {
             },
         },
     });
+
     return (
         <ThemeProvider theme={theme}>
             <BrowserRouter>
@@ -22,6 +23,9 @@ function App() {
                 <NavBar />
                 <main style={{ marginTop: 80 }}>
                     <Switch>
+                        <Route exact path="/">
+                            <Redirect to="/home" />
+                        </Route>
                         <Route exact path="/home">
                             <HomePage />
                         </Route>
