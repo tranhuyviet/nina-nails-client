@@ -14,7 +14,9 @@ const NavBar = () => {
             <Toolbar className={classes.toolbar}>
                 <Grid container>
                     <Grid item sm={2} container justify="flex-end" alignItems="center">
-                        <img src={logo} variant="square" alt="logo" />
+                        <NavLink to="/home">
+                            <img src={logo} variant="square" alt="logo" />
+                        </NavLink>
                     </Grid>
                     <Grid item sm={8} container justify="center" alignItems="center">
                         <NavLink className={classes.link} to="/home" activeClassName={classes.linkActive}>

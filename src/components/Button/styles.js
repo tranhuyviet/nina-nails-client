@@ -2,15 +2,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
     button: {
-        backgroundColor: theme.palette.primary.main,
-        borderRadius: '100px',
-        color: theme.palette.common.white,
-        padding: '16px 40px',
-        textTransform: 'capitalize',
-        fontFamily: 'Work Sans, san-serif',
-        fontSize: 18,
+        backgroundColor: `${theme.palette.primary.main}!important`,
+        borderRadius: '100px!important',
+        color: `${theme.palette.common.white}!important`,
+        padding: '16px 40px!important',
+        textTransform: 'capitalize!important',
+        fontFamily: 'Work Sans, san-serif!important',
+        fontSize: '18px!important',
         '&:hover': {
-            backgroundColor: theme.palette.grey[800],
+            backgroundColor: `${theme.palette.grey[800]}!important`,
         },
     },
 }));

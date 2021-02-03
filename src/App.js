@@ -6,6 +6,7 @@ import AboutPage from './pages/AboutPage/AboutPage';
 import ContactPage from './pages/ContactPage/ContactPage';
 import HomePage from './pages/HomePage/HomePage';
 import ProductPage from './pages/ProductPage/ProductPage';
+import Footer from './components/Footer/Footer';
 
 function App() {
     const theme = createMuiTheme({
@@ -41,6 +42,7 @@ function App() {
                         </Route>
                     </Switch>
                 </main>
+                <Footer />
             </BrowserRouter>
         </ThemeProvider>
     );
