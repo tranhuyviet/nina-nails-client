@@ -9,5 +9,8 @@ export const useStyles = makeStyles((theme) => ({
         textTransform: 'capitalize',
         fontFamily: 'Work Sans, san-serif',
         fontSize: 18,
+        '&:hover': {
+            backgroundColor: theme.palette.grey[800],
+        },
     },
 }));

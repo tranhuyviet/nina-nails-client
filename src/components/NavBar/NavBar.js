@@ -31,8 +31,8 @@ const NavBar = () => {
                         </NavLink>
                     </Grid>
                     <Grid item sm={2} container justify="center" alignItems="center">
-                        <Badge color="secondary" badgeContent={0} showZero className={classes.barge}>
-                            <ShoppingCartOutlinedIcon />
+                        <Badge badgeContent={0} showZero className={classes.barge} color="secondary">
+                            <ShoppingCartOutlinedIcon style={{ color: 'black' }} />
                         </Badge>
                     </Grid>
                 </Grid>

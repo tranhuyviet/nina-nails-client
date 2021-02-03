@@ -19,7 +19,8 @@ export const useStyles = makeStyles((theme) => ({
     },
     title: {
         fontSize: 72,
-        fontFamily: 'Crimson Text',
+        // fontFamily: 'PT Serif, sans-serif',
+        fontFamily: 'Crimson Text, serif',
         fontWeight: 600,
         lineHeight: 1.15,
     },
