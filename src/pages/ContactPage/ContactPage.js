@@ -9,7 +9,6 @@ import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import QueryBuilderOutlinedIcon from '@material-ui/icons/QueryBuilderOutlined';
 
-import Bounce from 'react-reveal/Bounce';
 import Zoom from 'react-reveal/Zoom';
 
 const ContactPage = () => {

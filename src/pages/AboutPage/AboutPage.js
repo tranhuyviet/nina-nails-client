@@ -1,8 +1,8 @@
 import { Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { useStyles } from './styles';
-import historyImg from '../../images/about-main.jpg';
-import aboutImg from '../../images/about1.png';
+import historyImg from '../../images/about-main.webp';
+import aboutImg from '../../images/about1.webp';
 import Title from '../../components/Title/Title';
 import Fade from 'react-reveal/Fade';
 const AboutPage = () => {

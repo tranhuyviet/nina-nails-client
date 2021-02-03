@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { BorderColor } from '@material-ui/icons';
 import contactBg from '../../images/bg4.webp';
 
 export const useStyles = makeStyles((theme) => ({
