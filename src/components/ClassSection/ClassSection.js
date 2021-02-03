@@ -4,8 +4,9 @@ import { useStyles } from './styles';
 import { Grid, Typography } from '@material-ui/core';
 import class1Image from '../../images/class1.webp';
 import class2Image from '../../images/class2.jpg';
-import lineImage from '../../images/line.png';
+
 import Flip from 'react-reveal/Flip';
+import Title from '../Title/Title';
 
 const ClassSection = () => {
     const classes = useStyles();
@@ -18,8 +19,7 @@ const ClassSection = () => {
                     </Grid>
                     <Grid item sm={6} className={classes.textContainer}>
                         <Flip top>
-                            <Typography className={classes.title1}>Nail Online Class</Typography>
-                            <img src={lineImage} alt="line" />
+                            <Title title="Nail Online class" />
                             <Typography className={classes.title2}>with Hong Nhung</Typography>
                             <Typography className={classes.date}>22.9.2020 - 06.11.2020</Typography>
                             <ul className={classes.ul}>
@@ -37,8 +37,7 @@ const ClassSection = () => {
                 <Grid item sm={12} container style={{ marginTop: 50 }}>
                     <Grid item sm={6} className={classes.textContainer}>
                         <Flip top>
-                            <Typography className={classes.title1}>Gel Designs Online Class</Typography>
-                            <img src={lineImage} alt="line" />
+                            <Title title="Gel Designs Online Class" />
                             <Typography className={classes.title2}>with Hong Nhung</Typography>
                             <Typography className={classes.date}>28.10.2020 - 11.11.2020</Typography>
                             <ul className={classes.ul}>

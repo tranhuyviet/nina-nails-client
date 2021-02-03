@@ -20,19 +20,20 @@ export const useStyles = makeStyles((theme) => ({
         maxWidth: 600,
         paddingLeft: 100,
     },
-    title: {
-        fontSize: 51,
-        fontFamily: 'Crimson Text',
-        fontWeight: 'bold',
-        marginBottom: 16,
-    },
+    // title: {
+    //     fontSize: 51,
+    //     fontFamily: 'Crimson Text',
+    //     fontWeight: 'bold',
+    //     marginBottom: 16,
+    // },
     subTitle: {
         fontSize: 23,
         fontFamily: 'Crimson Text',
         fontStyle: 'italic',
-        marginBottom: 20,
+        marginTop: 20,
     },
     text: {
+        marginTop: 20,
         fontFamily: 'Work Sans',
         marginBottom: 32,
     },

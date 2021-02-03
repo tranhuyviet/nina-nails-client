@@ -5,6 +5,7 @@ import { useStyles } from './styles';
 import aboutSection from '../../images/aboutSection.webp';
 import Zoom from 'react-reveal/Zoom';
 import Fade from 'react-reveal/Fade';
+import Title from '../Title/Title';
 
 const AboutSection = () => {
     const classes = useStyles();
@@ -19,7 +20,7 @@ const AboutSection = () => {
                 <Grid item sm={6} container alignItems="center" className={classes.gridRight}>
                     <div className={classes.rightContainer}>
                         <Fade bottom>
-                            <Typography className={classes.title}>About us...</Typography>
+                            <Title title="about us..." />
                         </Fade>
                         <Fade bottom>
                             <Typography className={classes.subTitle}>“Every year we help thousands of women feel and look even more stylish!”</Typography>
