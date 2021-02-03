@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme) => ({
         backgroundColor: `${theme.palette.primary.main}!important`,
         borderRadius: '100px!important',
         color: `${theme.palette.common.white}!important`,
-        padding: '16px 40px!important',
+        padding: '10px 40px!important',
         textTransform: 'capitalize!important',
         fontFamily: 'Work Sans, san-serif!important',
         fontSize: '18px!important',
