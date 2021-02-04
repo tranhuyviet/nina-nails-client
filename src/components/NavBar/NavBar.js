@@ -23,7 +23,7 @@ const NavBar = () => {
                             Home
                         </NavLink>
                         <NavLink className={classes.link} to="/products" activeClassName={classes.linkActive}>
-                            Product
+                            Products
                         </NavLink>
                         <NavLink className={classes.link} to="/about" activeClassName={classes.linkActive}>
                             About Us
