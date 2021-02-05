@@ -33,10 +33,12 @@ export const useStyles = makeStyles((theme) => ({
         background: '#faefed',
         padding: 8,
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
     inputContainer: {
         position: 'relative',
+
         width: 400,
     },
     searchInput: {
@@ -46,11 +48,16 @@ export const useStyles = makeStyles((theme) => ({
         borderRadius: 100,
         border: `1px solid ${theme.palette.primary.main}`,
         outline: 'none',
+        fontSize: 16,
     },
     searchIcon: {
         position: 'absolute',
         left: 10,
         top: 9,
         color: theme.palette.primary.main,
+    },
+    sortContainer: {
+        display: 'flex',
+        alignItems: 'center',
     },
 }));
