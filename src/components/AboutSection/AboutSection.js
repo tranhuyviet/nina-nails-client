@@ -33,7 +33,7 @@ const AboutSection = () => {
                             <Typography className={classes.text}>- Nails.</Typography>
                         </Fade>
                         <Fade bottom>
-                            <Button text="More detail" linkTo="/about" />
+                            <Button text="More detail" linkTo="/classes" />
                         </Fade>
                     </div>
                 </Grid>

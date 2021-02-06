@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
     gallerySection: {
-        backgroundColor: theme.palette.common.white,
+        backgroundColor: theme.palette.grey[50],
         textAlign: 'center',
         padding: '40px 0px',
     },

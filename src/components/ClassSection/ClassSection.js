@@ -3,7 +3,7 @@ import { useStyles } from './styles';
 // import classImage from '../../images/class-bg.png';
 import { Grid, Typography } from '@material-ui/core';
 import class1Image from '../../images/class.webp';
-import class2Image from '../../images/class2.jpg';
+// import class2Image from '../../images/class2.jpg';
 
 import Flip from 'react-reveal/Flip';
 import Title from '../Title/Title';
@@ -32,7 +32,7 @@ const ClassSection = () => {
                                 <li className={classes.li}>Acrylic Designs</li>
                                 <li className={classes.li}>3D Basic</li>
                             </ul>
-                            <Button text="More detail" />
+                            <Button text="More detail" linkTo="/class" />
                         </Flip>
                     </Grid>
                 </Grid>

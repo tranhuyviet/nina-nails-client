@@ -25,6 +25,9 @@ const NavBar = () => {
                         <NavLink className={classes.link} to="/products" activeClassName={classes.linkActive}>
                             Products
                         </NavLink>
+                        <NavLink className={classes.link} to="/classes" activeClassName={classes.linkActive}>
+                            Classes
+                        </NavLink>
                         <NavLink className={classes.link} to="/about" activeClassName={classes.linkActive}>
                             About Us
                         </NavLink>

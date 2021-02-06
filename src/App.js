@@ -7,6 +7,7 @@ import ContactPage from './pages/ContactPage/ContactPage';
 import HomePage from './pages/HomePage/HomePage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import Footer from './components/Footer/Footer';
+import ClassPage from './pages/ClassPage/ClassPage';
 
 function App() {
     const theme = createMuiTheme({
@@ -33,6 +34,9 @@ function App() {
                         </Route>
                         <Route exact path="/products">
                             <ProductPage />
+                        </Route>
+                        <Route exact path="/classes">
+                            <ClassPage />
                         </Route>
                         <Route exact path="/about">
                             <AboutPage />
