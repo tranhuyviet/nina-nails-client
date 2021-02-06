@@ -7,10 +7,11 @@ export const useStyles = makeStyles((theme) => ({
         minHeight: 'calc(100vh - 130px)',
     },
     gridContainer: {
-        padding: '40px 10%',
+        padding: '20px 10%',
     },
     categoryContainer: {
         textAlign: 'left',
+        paddingTop: 10,
     },
     categoryTitle: {
         fontSize: 18,
@@ -33,12 +34,11 @@ export const useStyles = makeStyles((theme) => ({
         background: '#faefed',
         padding: 8,
         display: 'flex',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
     },
     inputContainer: {
         position: 'relative',
-
         width: 400,
     },
     searchInput: {
@@ -46,15 +46,20 @@ export const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: 40,
         borderRadius: 100,
-        border: `1px solid ${theme.palette.primary.main}`,
+        border: `1px solid ${theme.palette.grey[300]}`,
         outline: 'none',
         fontSize: 16,
+        color: theme.palette.grey[600],
+        '&::placeholder': {
+            color: theme.palette.grey[400],
+        },
     },
     searchIcon: {
         position: 'absolute',
         left: 10,
         top: 9,
-        color: theme.palette.primary.main,
+        // color: theme.palette.primary.main,
+        color: theme.palette.grey[400],
     },
     sortContainer: {
         display: 'flex',

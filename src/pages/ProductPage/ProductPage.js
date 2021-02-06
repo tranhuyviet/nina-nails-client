@@ -53,7 +53,12 @@ const ProductPage = () => {
         <section className={classes.productPage}>
             <Title title="Products" />
             <br />
-
+            <Grid container justify="center" style={{ marginTop: 20 }}>
+                <div className={classes.inputContainer}>
+                    <input type="search" placeholder="Search product" className={classes.searchInput} value={searchText} onChange={handleSearch} />
+                    <SearchIcon className={classes.searchIcon} />
+                </div>
+            </Grid>
             <Grid container className={classes.gridContainer}>
                 <Grid item sm={2} className={classes.categoryContainer}>
                     <Typography
@@ -81,22 +86,22 @@ const ProductPage = () => {
                     </List>
                 </Grid>
                 <Grid item sm={10} container className={classes.productsContainer}>
-                    <Grid item sm={12} className={classes.searchBarContainer}>
+                    {/* <Grid item sm={12} className={classes.searchBarContainer}>
                         <div className={classes.searchBar}>
                             <div className={classes.inputContainer}>
                                 <input type="search" placeholder="Search product" className={classes.searchInput} value={searchText} onChange={handleSearch} />
                                 <SearchIcon className={classes.searchIcon} />
                             </div>
-                            {/* <FormControl variant="standard">
+                            <FormControl variant="standard">
                                 <div className={classes.sortContainer}>
                                     <Select value={sortPrice} onChange={handleSort}>
                                         <MenuItem value="asc">Sort by Price: Low to High</MenuItem>
                                         <MenuItem value="desc">Sort by Price: Hight to Low</MenuItem>
                                     </Select>
                                 </div>
-                            </FormControl> */}
+                            </FormControl>
                         </div>
-                    </Grid>
+                    </Grid> */}
                     {products &&
                         products.map((product) => (
                             <Grid item sm={3} className={classes.cardContainer} key={product.id}>
