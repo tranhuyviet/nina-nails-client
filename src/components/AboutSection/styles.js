@@ -9,9 +9,18 @@ export const useStyles = makeStyles((theme) => ({
         backgroundPosition: 'center',
         backgroundSize: 'cover',
     },
-    image: {
-        paddingBottom: 110,
+    imageContainer: {
+        width: 500,
+        height: 460,
+        padding: 20,
+        border: '1px solid',
+        borderColor: theme.palette.grey[400],
+        backgroundColor: theme.palette.common.white,
         marginRight: 50,
+        marginBottom: 100,
+    },
+    image: {
+        width: '100%',
     },
     gridRight: {
         height: '100vh',
@@ -33,8 +42,8 @@ export const useStyles = makeStyles((theme) => ({
         marginTop: 20,
     },
     text: {
-        marginTop: 20,
+        marginTop: 10,
         fontFamily: 'Work Sans',
-        marginBottom: 32,
+        marginBottom: 14,
     },
 }));

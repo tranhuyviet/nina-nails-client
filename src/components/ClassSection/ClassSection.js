@@ -2,11 +2,12 @@ import React from 'react';
 import { useStyles } from './styles';
 // import classImage from '../../images/class-bg.png';
 import { Grid, Typography } from '@material-ui/core';
-import class1Image from '../../images/class1.webp';
+import class1Image from '../../images/class.webp';
 import class2Image from '../../images/class2.jpg';
 
 import Flip from 'react-reveal/Flip';
 import Title from '../Title/Title';
+import Button from '../Button/Button';
 
 const ClassSection = () => {
     const classes = useStyles();
@@ -31,10 +32,11 @@ const ClassSection = () => {
                                 <li className={classes.li}>Acrylic Designs</li>
                                 <li className={classes.li}>3D Basic</li>
                             </ul>
+                            <Button text="More detail" />
                         </Flip>
                     </Grid>
                 </Grid>
-                <Grid item sm={12} container style={{ marginTop: 50 }}>
+                {/* <Grid item sm={12} container style={{ marginTop: 50 }}>
                     <Grid item sm={6} className={classes.textContainer}>
                         <Flip top>
                             <Title title="Gel Designs Online Class" />
@@ -53,9 +55,8 @@ const ClassSection = () => {
                     <Grid item sm={6} className={classes.imageContainer}>
                         <img src={class2Image} alt="class2" className={classes.image} />
                     </Grid>
-                </Grid>
+                </Grid> */}
             </Grid>
-            {/* <img src={classImage} alt="class" className={classes.bgImage} /> */}
         </section>
     );
 };

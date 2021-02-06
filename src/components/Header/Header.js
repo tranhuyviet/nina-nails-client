@@ -8,6 +8,8 @@ const Header = () => {
     const classes = useStyles();
     return (
         <div className={classes.header}>
+            <div className={classes.headerContainer} />
+
             <Grid container alignItems="center" className={classes.gridContainer}>
                 <div className={classes.textContainer}>
                     <Fade left duration={1000}>
