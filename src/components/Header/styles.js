@@ -14,7 +14,7 @@ export const useStyles = makeStyles((theme) => ({
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        backgroundAttachment: 'fixed',
+        // backgroundAttachment: 'fixed',
         filter: 'brightness(0.6)',
     },
 

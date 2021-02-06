@@ -11,16 +11,18 @@ export const useStyles = makeStyles((theme) => ({
     },
     imageContainer: {
         width: 500,
-        height: 460,
+        height: 500,
         padding: 20,
         border: '1px solid',
         borderColor: theme.palette.grey[400],
         backgroundColor: theme.palette.common.white,
         marginRight: 50,
-        marginBottom: 100,
+        marginBottom: 120,
+        boxShadow: theme.shadows[2],
     },
     image: {
         width: '100%',
+        height: '100%',
     },
     gridRight: {
         height: '100vh',

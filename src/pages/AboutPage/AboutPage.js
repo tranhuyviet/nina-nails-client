@@ -1,8 +1,10 @@
 import { Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { useStyles } from './styles';
-import historyImg from '../../images/about-main.webp';
-import aboutImg from '../../images/about1.webp';
+// import historyImg from '../../images/about-main.webp';
+// import aboutImg from '../../images/about1.webp';
+import aboutImg from '../../images/about.webp';
+import about2Img from '../../images/about2.webp';
 import Title from '../../components/Title/Title';
 import Fade from 'react-reveal/Fade';
 const AboutPage = () => {
@@ -10,21 +12,22 @@ const AboutPage = () => {
     return (
         <section className={classes.aboutPage}>
             <Grid container sm={12} className={classes.headerContainer}>
-                <Grid item sm={6} container justify="flex-end" style={{ paddingRight: 50 }}>
+                <Grid item sm={6} container justify="flex-end" style={{ paddingRight: 50 }} alignItems="center">
                     <Fade left>
-                        <img src={aboutImg} alt="about" />
+                        <img src={aboutImg} alt="about" width="500" className={classes.image1} />
                     </Fade>
                 </Grid>
                 <Grid item sm={6} container alignItems="center">
                     <div className={classes.textContainer}>
-                        <Title title="Our Nail Bar" />
+                        <Title title="Lời giới thiệu" />
                         <Typography className={classes.text}>
-                            opened its doors, with a team of talented, passionate, caring, creative people dedicated to doing great nails and giving our clients
-                            amazing experiences.
+                            Ninanail.com là Website bán hàng chính thức của công ty Nina D s.r.o. Công ty với trụ sở chính tại Cộng Hoà Séc,hoạt động với mục
+                            tiêu mang lại những sản phẩm tốt nhất trong nghành Nail và Lashes đến với cộng đồng người Việt Nam trên khắp thế giới.
                         </Typography>
+
                         <Typography className={classes.text}>
-                            We are always looking for the best, most natural products we can find. When you walk into our doors, you will be greeted with a
-                            smile and taken care of by everyone on our team. Every moment of your visit should be enjoyable and relaxed.
+                            Được thành lập với người đứng đầu là Master Hong Nhung - Người rất thành công trong ngành Nail và Lashes. Cô đã từng đoạt được rất
+                            nhiều giải thưởng và từng là giám khảo của nhiều cuộc thi quốc tế tại Châu Âu và Châu Á.
                         </Typography>
                     </div>
                 </Grid>
@@ -32,17 +35,19 @@ const AboutPage = () => {
             <Grid container sm={12} className={classes.historyContainer}>
                 <Grid item sm={6} container alignItems="center" justify="flex-end">
                     <div className={classes.textContainer}>
-                        <Title title="Our History" />
-                        <Typography className={classes.text}>We are passionate about our career and have devoted over ten years to the industry.</Typography>
                         <Typography className={classes.text}>
-                            When you walk through our doors, you will find that our friendly seasoned staff will be happy to assist you with all your beauty
-                            needs.
+                            Với tâm nguyện đưa ngành Nail và Lashes của người Việt phát triển đúng hướng, Cô và công ty Nina D đã tổ chức rất nhiều khoá học, sự
+                            kiện để mang đến sự chuyên nghiệp, cải thiện tay nghề cho trên 1500 học viên người Việt trên khắp thế giới.
+                        </Typography>
+                        <Typography className={classes.text}>
+                            Cùng với đó, Cô cùng công ty luôn nghiên cứu và cho ra đời những dòng sản phẩm chất lượng,mang tính thực tế cao để phục vụ cho công
+                            việc của người thợ dễ dàng hơn, cũng như mang đến sự thoải mái cho khách hàng.
                         </Typography>
                     </div>
                 </Grid>
-                <Grid item sm={6}>
+                <Grid item sm={6} style={{ paddingLeft: 40 }}>
                     <Fade right>
-                        <img src={historyImg} alt="about" className={classes.image} />
+                        <img src={about2Img} alt="about" className={classes.image2} />
                     </Fade>
                 </Grid>
             </Grid>
