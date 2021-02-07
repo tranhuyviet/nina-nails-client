@@ -25,7 +25,8 @@ export const useStyles = makeStyles((theme) => ({
     },
     text: {
         fontFamily: 'Work Sans',
-        fontSize: 18,
+        fontSize: 16,
+        textAlign: 'left',
     },
     infoContainer: {
         padding: '20px 20px 20px 16px',
@@ -37,5 +38,14 @@ export const useStyles = makeStyles((theme) => ({
     },
     formContainer: {
         padding: 20,
+    },
+    socialIcon: {
+        fontSize: 50,
+        // color: theme.palette.primary.main,
+        color: theme.palette.grey[600],
+        transition: 'all 0.3s linear',
+        '&:hover': {
+            color: theme.palette.primary.main,
+        },
     },
 }));
