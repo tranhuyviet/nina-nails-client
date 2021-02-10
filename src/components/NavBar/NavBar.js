@@ -1,15 +1,21 @@
-import React from 'react';
-import { AppBar, Badge, Grid, Toolbar } from '@material-ui/core';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
+import { AppBar, Badge, Grid, IconButton, Toolbar } from '@material-ui/core';
 import { useStyles } from './styles';
 import logo from '../../images/logo.jpg';
 
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-import { NavLink } from 'react-router-dom';
-import { useCart } from '../../context/cartContext';
+import { NavLink, Link } from 'react-router-dom';
+import { useCart } from '../../context';
+import { fetchCart } from '../../lib/api';
 
 const NavBar = () => {
     const classes = useStyles();
-    const { cart } = useCart();
+    const { cart, setCart } = useCart();
+
+    useEffect(() => {
+        fetchCart().then((cart) => setCart(cart));
+    }, []);
 
     console.log('CART: ', cart);
 
@@ -40,9 +46,11 @@ const NavBar = () => {
                         </NavLink>
                     </Grid>
                     <Grid item sm={2} container justify="center" alignItems="center">
-                        <Badge badgeContent={cart.total_items ? cart.total_items : 0} showZero className={classes.barge} color="secondary">
-                            <ShoppingCartOutlinedIcon style={{ color: 'black' }} />
-                        </Badge>
+                        <IconButton component={Link} to="/cart">
+                            <Badge badgeContent={cart.total_items ? cart.total_items : 0} showZero className={classes.barge} color="secondary">
+                                <ShoppingCartOutlinedIcon style={{ color: 'black' }} />
+                            </Badge>
+                        </IconButton>
                     </Grid>
                 </Grid>
             </Toolbar>

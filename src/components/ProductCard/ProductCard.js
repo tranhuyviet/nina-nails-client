@@ -1,17 +1,21 @@
-import React from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Button, Card, CardActions, CardContent, CardMedia, CircularProgress, Grid, Typography } from '@material-ui/core';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import { useStyles } from './styles';
-import { useCart } from '../../context/cartContext';
+import { useCart } from '../../context';
 import { addToCart } from '../../lib/api';
 
 const ProductCard = ({ product }) => {
     const classes = useStyles();
     const { setCart } = useCart();
+    const [loading, setLoading] = useState(false);
 
     const handleAddToCart = async () => {
         console.log('Add to cart', product.id);
-        setCart(await addToCart(product.id, 1));
+        setLoading(true);
+        const cart = await addToCart(product.id, 1);
+        setCart(cart);
+        setLoading(false);
     };
 
     return (
@@ -27,7 +31,13 @@ const ProductCard = ({ product }) => {
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing classes={{ root: classes.cardActions }}>
-                    <Button variant="outlined" startIcon={<ShoppingCartOutlinedIcon />} type="button" onClick={handleAddToCart}>
+                    <Button
+                        variant="outlined"
+                        startIcon={loading ? <CircularProgress size={20} /> : <ShoppingCartOutlinedIcon />}
+                        type="button"
+                        disabled={loading}
+                        onClick={handleAddToCart}
+                    >
                         Add to Cart
                     </Button>
                 </CardActions>

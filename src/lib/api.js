@@ -16,7 +16,7 @@ export const fetchProducts = async () => {
 };
 
 export const fetchCart = async () => {
-    const cart = await commerce.cart.retrive();
+    const cart = await commerce.cart.retrieve();
     return cart;
 };
 

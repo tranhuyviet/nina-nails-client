@@ -8,7 +8,7 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import SearchIcon from '@material-ui/icons/Search';
 // import _ from 'lodash';
 import { fetchCategories, fetchProducts } from '../../lib/api';
-import { useProduct } from '../../context/productContext';
+import { useProduct } from '../../context';
 
 const ProductPage = () => {
     const classes = useStyles();

@@ -1,6 +1,7 @@
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
 import NavBar from './components/NavBar/NavBar';
 import AboutPage from './pages/AboutPage/AboutPage';
 import ContactPage from './pages/ContactPage/ContactPage';
@@ -9,8 +10,8 @@ import ProductPage from './pages/ProductPage/ProductPage';
 import Footer from './components/Footer/Footer';
 import ClassPage from './pages/ClassPage/ClassPage';
 
-import { ProductProvider } from './context/productContext';
-import { CartProvider } from './context/cartContext';
+import { CartProvider, ProductProvider } from './context';
+import CartPage from './pages/CartPage/CartPage';
 
 function App() {
     const theme = createMuiTheme({
@@ -48,6 +49,9 @@ function App() {
                                 </Route>
                                 <Route exact path="/contact">
                                     <ContactPage />
+                                </Route>
+                                <Route exact path="/cart">
+                                    <CartPage />
                                 </Route>
                             </Switch>
                         </main>
