@@ -5,9 +5,13 @@ import logo from '../../images/logo.jpg';
 
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import { NavLink } from 'react-router-dom';
+import { useCart } from '../../context/cartContext';
 
 const NavBar = () => {
     const classes = useStyles();
+    const { cart } = useCart();
+
+    console.log('CART: ', cart);
 
     return (
         <AppBar color="transparent" className={classes.navbar}>
@@ -36,7 +40,7 @@ const NavBar = () => {
                         </NavLink>
                     </Grid>
                     <Grid item sm={2} container justify="center" alignItems="center">
-                        <Badge badgeContent={0} showZero className={classes.barge} color="secondary">
+                        <Badge badgeContent={cart.total_items ? cart.total_items : 0} showZero className={classes.barge} color="secondary">
                             <ShoppingCartOutlinedIcon style={{ color: 'black' }} />
                         </Badge>
                     </Grid>

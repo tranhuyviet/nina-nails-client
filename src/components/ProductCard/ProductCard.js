@@ -1,22 +1,38 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Typography } from '@material-ui/core';
 import React from 'react';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@material-ui/core';
+import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import { useStyles } from './styles';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-const ProductCard = ({ image, name, price }) => {
+import { useCart } from '../../context/cartContext';
+import { addToCart } from '../../lib/api';
+
+const ProductCard = ({ product }) => {
     const classes = useStyles();
+    const { setCart } = useCart();
+
+    const handleAddToCart = async () => {
+        console.log('Add to cart', product.id);
+        setCart(await addToCart(product.id, 1));
+    };
+
     return (
-        <Card className={classes.card}>
-            <CardMedia image={image} title={name} className={classes.cardMedia} />
-            <CardContent className={classes.cardContent}>
-                <Typography className={classes.name}>{name}</Typography>
-                <Typography className={classes.price}>€{price}</Typography>
-            </CardContent>
-            <CardActions className={classes.cardAction}>
-                <Button variant="outlined" startIcon={<AddShoppingCartIcon />} color="primary">
-                    Add to Cart
-                </Button>
-            </CardActions>
-        </Card>
+        <Grid item xs={12} sm={6} md={4} container justify="center">
+            <Card className={classes.card}>
+                <CardMedia image={product.media.source} className={classes.cardMedia} title={product.name} />
+                <CardContent>
+                    <Typography variant="subtitle1" gutterBottom>
+                        {product.name}
+                    </Typography>
+                    <Typography variant="h6" className={classes.price}>
+                        {product.price.formatted_with_symbol}
+                    </Typography>
+                </CardContent>
+                <CardActions disableSpacing classes={{ root: classes.cardActions }}>
+                    <Button variant="outlined" startIcon={<ShoppingCartOutlinedIcon />} type="button" onClick={handleAddToCart}>
+                        Add to Cart
+                    </Button>
+                </CardActions>
+            </Card>
+        </Grid>
     );
 };
 

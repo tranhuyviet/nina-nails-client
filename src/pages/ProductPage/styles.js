@@ -20,9 +20,9 @@ export const useStyles = makeStyles((theme) => ({
             cursor: 'pointer',
         },
     },
-    // productsContainer: {
-    //     padding: '16px ',
-    // },
+    productsContainer: {
+        padding: '16px ',
+    },
     cardContainer: {
         padding: 16,
     },
@@ -64,5 +64,8 @@ export const useStyles = makeStyles((theme) => ({
     sortContainer: {
         display: 'flex',
         alignItems: 'center',
+    },
+    listItem: {
+        paddingLeft: 30,
     },
 }));

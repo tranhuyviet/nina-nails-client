@@ -9,6 +9,9 @@ import ProductPage from './pages/ProductPage/ProductPage';
 import Footer from './components/Footer/Footer';
 import ClassPage from './pages/ClassPage/ClassPage';
 
+import { ProductProvider } from './context/productContext';
+import { CartProvider } from './context/cartContext';
+
 function App() {
     const theme = createMuiTheme({
         palette: {
@@ -21,33 +24,37 @@ function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <BrowserRouter>
-                <CssBaseline />
-                <NavBar />
-                <main style={{ marginTop: 80 }}>
-                    <Switch>
-                        <Route exact path="/">
-                            <Redirect to="/home" />
-                        </Route>
-                        <Route exact path="/home">
-                            <HomePage />
-                        </Route>
-                        <Route exact path="/products">
-                            <ProductPage />
-                        </Route>
-                        <Route exact path="/classes">
-                            <ClassPage />
-                        </Route>
-                        <Route exact path="/about">
-                            <AboutPage />
-                        </Route>
-                        <Route exact path="/contact">
-                            <ContactPage />
-                        </Route>
-                    </Switch>
-                </main>
-                <Footer />
-            </BrowserRouter>
+            <CartProvider>
+                <ProductProvider>
+                    <BrowserRouter>
+                        <CssBaseline />
+                        <NavBar />
+                        <main style={{ marginTop: 80 }}>
+                            <Switch>
+                                <Route exact path="/">
+                                    <Redirect to="/home" />
+                                </Route>
+                                <Route exact path="/home">
+                                    <HomePage />
+                                </Route>
+                                <Route exact path="/products">
+                                    <ProductPage />
+                                </Route>
+                                <Route exact path="/classes">
+                                    <ClassPage />
+                                </Route>
+                                <Route exact path="/about">
+                                    <AboutPage />
+                                </Route>
+                                <Route exact path="/contact">
+                                    <ContactPage />
+                                </Route>
+                            </Switch>
+                        </main>
+                        <Footer />
+                    </BrowserRouter>
+                </ProductProvider>
+            </CartProvider>
         </ThemeProvider>
     );
 }

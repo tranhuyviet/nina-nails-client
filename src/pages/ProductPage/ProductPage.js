@@ -1,53 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, List, ListItem, ListItemText, Typography } from '@material-ui/core';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect, useCallback } from 'react';
+import { CircularProgress, Grid, List, ListItem, ListItemText } from '@material-ui/core';
 import Title from '../../components/Title/Title';
 import { useStyles } from './styles';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import { products as productsData } from '../../fake-data';
+
 import SearchIcon from '@material-ui/icons/Search';
 // import _ from 'lodash';
+import { fetchCategories, fetchProducts } from '../../lib/api';
+import { useProduct } from '../../context/productContext';
 
 const ProductPage = () => {
     const classes = useStyles();
-    // const initialProducts = _.sortBy(productsData, 'price');
-    const [products, setProducts] = useState(productsData);
+    const { categories, products, filteredProducts, setCategories, setProducts, setFilteredProducts } = useProduct();
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    // const [categories, setCategories] = useState([]);
+    // const [products, setProducts] = useState([]);
+    // const [productsSelected, setProductSelected] = useState([]);
     const [searchText, setSearchText] = useState('');
-    // const [sortPrice, setSortPrice] = useState('asc');
+    const [loading, setLoading] = useState(false);
 
-    const filterProduct = (categoryId) => {
-        setSearchText('');
-        const filteredProducts = productsData.filter((product) => product.categoryId === categoryId);
-        setProducts(filteredProducts);
+    const handleListItemClick = (event, index, categoryId) => {
+        setSelectedIndex(index);
+        // console.log(categoryId);
+        // setSelectCategoryId(categoryId);
+        setFilteredProducts({ categoryId });
     };
+
+    // const filterProduct = (categoryId) => {
+    //     setSearchText('');
+    //     const filteredProducts = productsData.filter((product) => product.categoryId === categoryId);
+    //     setProducts(filteredProducts);
+    // };
 
     const handleSearch = (e) => {
         setSearchText(e.target.value);
+        setFilteredProducts({ text: e.target.value });
     };
 
-    // const handleSort = (e) => {
-    //     let sortProducts;
-    //     console.log(e.target.value);
-    //     if (e.target.value === 'asc') {
-    //         sortProducts = _.sortBy(products, 'price');
-    //     } else if (e.target.value === 'desc') {
-    //         sortProducts = _.sortBy(products, 'price').reverse();
-    //     }
-    //     setSortPrice(e.target.value);
-    //     setProducts(sortProducts);
-    // };
-
-    // function sortProducts(prods) {
-    //     if (sortPrice === 'desc') {
-    //         setProducts(prods.reverse());
-    //     } else {
-    //         setProducts(prods);
-    //     }
-    // }
+    const getData = useCallback(async () => {
+        setLoading(true);
+        const categories = await fetchCategories();
+        const products = await fetchProducts();
+        setCategories(categories);
+        setProducts(products);
+        setFilteredProducts({ categoryId: 'all' });
+        setLoading(false);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useEffect(() => {
-        const searchedProducts = productsData.filter((product) => product.name.toLowerCase().includes(searchText));
-        setProducts(searchedProducts);
-    }, [searchText]);
+        getData();
+    }, []);
+
+    // useEffect(() => {
+    //     const searchedProducts = productsData.filter((product) => product.name.toLowerCase().includes(searchText));
+    //     setProducts(searchedProducts);
+    // }, [searchText]);
+
+    console.log(categories, products);
 
     return (
         <section className={classes.productPage}>
@@ -61,53 +72,32 @@ const ProductPage = () => {
             </Grid>
             <Grid container className={classes.gridContainer}>
                 <Grid item sm={2} className={classes.categoryContainer}>
-                    <Typography
-                        className={classes.categoryTitle}
-                        onClick={() => {
-                            setProducts(productsData);
-                            setSearchText('');
-                        }}
-                    >
-                        All Products ({`${productsData.length}`})
-                    </Typography>
                     <List>
-                        <ListItem button onClick={() => filterProduct('1')}>
-                            <ListItemText primary="Gel NinaD" />
+                        <ListItem divider button selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0, 'all')}>
+                            <ListItemText primary={`All Products (${products.length})`} />
                         </ListItem>
-                        <ListItem button>
-                            <ListItemText primary="Brushes" onClick={() => filterProduct('2')} />
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemText primary="Acrylic" onClick={() => filterProduct('3')} />
-                        </ListItem>
-                        <ListItem button>
-                            <ListItemText primary="Nail drill bits" onClick={() => filterProduct('4')} />
-                        </ListItem>
+                        {categories &&
+                            categories.map((category, index) => (
+                                <ListItem
+                                    key={category.id}
+                                    button
+                                    selected={selectedIndex === index + 1}
+                                    onClick={(event) => handleListItemClick(event, index + 1, category.id)}
+                                    className={classes.listItem}
+                                >
+                                    <ListItemText primary={category.name} />
+                                </ListItem>
+                            ))}
                     </List>
                 </Grid>
-                <Grid item sm={10} container className={classes.productsContainer}>
-                    {/* <Grid item sm={12} className={classes.searchBarContainer}>
-                        <div className={classes.searchBar}>
-                            <div className={classes.inputContainer}>
-                                <input type="search" placeholder="Search product" className={classes.searchInput} value={searchText} onChange={handleSearch} />
-                                <SearchIcon className={classes.searchIcon} />
-                            </div>
-                            <FormControl variant="standard">
-                                <div className={classes.sortContainer}>
-                                    <Select value={sortPrice} onChange={handleSort}>
-                                        <MenuItem value="asc">Sort by Price: Low to High</MenuItem>
-                                        <MenuItem value="desc">Sort by Price: Hight to Low</MenuItem>
-                                    </Select>
-                                </div>
-                            </FormControl>
+                <Grid item sm={10} container className={classes.productsContainer} justify="center" alignItems="center" spacing={4}>
+                    {loading ? (
+                        <div className={classes.circularProgress}>
+                            <CircularProgress />
                         </div>
-                    </Grid> */}
-                    {products &&
-                        products.map((product) => (
-                            <Grid item sm={3} className={classes.cardContainer} key={product.id}>
-                                <ProductCard image={product.image} name={product.name} price={product.price} />
-                            </Grid>
-                        ))}
+                    ) : (
+                        filteredProducts && filteredProducts.map((product) => <ProductCard product={product} key={product.id} />)
+                    )}
                 </Grid>
             </Grid>
         </section>

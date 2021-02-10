@@ -26,7 +26,7 @@ const ContactPage = () => {
                     <Grid container>
                         <Grid item sm={6} className={classes.formContainer}>
                             <form>
-                                <TextField variant="outlined" label="Name" type="text" fullWidth color="info" />
+                                <TextField variant="outlined" label="Name" type="text" fullWidth />
                                 <TextField variant="outlined" label="Email" type="email" fullWidth style={{ marginTop: 20 }} />
                                 <TextField variant="outlined" label="Message" multiline rows={6} fullWidth style={{ margin: '20px 0' }} />
                                 <Button text="Send" />
