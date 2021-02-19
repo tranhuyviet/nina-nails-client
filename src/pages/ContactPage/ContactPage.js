@@ -49,7 +49,7 @@ const ContactPage = () => {
                                 <Zoom bottom delay={400} duration={1000}>
                                     <Grid item container alignItems="center" className={classes.infoGroup}>
                                         <LocationOnOutlinedIcon className={classes.icon} />
-                                        <Typography className={classes.text}>Chvalovice 95, 669 02 Znojmo, Czech Republic</Typography>
+                                        <Typography className={classes.text}>Chvalovice 11, 66902 Znojmo, Czech Republic</Typography>
                                     </Grid>
                                 </Zoom>
                                 <Zoom bottom delay={600} duration={1000}>
