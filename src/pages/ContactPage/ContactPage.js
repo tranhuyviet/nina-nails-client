@@ -16,8 +16,25 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import Zoom from 'react-reveal/Zoom';
 import Fade from 'react-reveal/Fade';
 
+import emailjs from 'emailjs-com';
+
 const ContactPage = () => {
     const classes = useStyles();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        console.log('submit...');
+        emailjs.sendForm(process.env.REACT_APP_EMAIL_SERVICE, process.env.REACT_APP_EMAIL_TEMPLATE, e.target, process.env.REACT_APP_EMAIL_USERID).then(
+            (result) => {
+                console.log(result.text);
+            },
+            (error) => {
+                console.log(error.text);
+            }
+        );
+        e.target.reset();
+    };
+
     return (
         <section className={classes.contactPage}>
             <Title title="Contact us" />
@@ -25,11 +42,11 @@ const ContactPage = () => {
                 <Paper className={classes.paper}>
                     <Grid container>
                         <Grid item sm={6} className={classes.formContainer}>
-                            <form>
-                                <TextField variant="outlined" label="Name" type="text" fullWidth />
-                                <TextField variant="outlined" label="Email" type="email" fullWidth style={{ marginTop: 20 }} />
-                                <TextField variant="outlined" label="Message" multiline rows={6} fullWidth style={{ margin: '20px 0' }} />
-                                <Button text="Send" />
+                            <form onSubmit={sendEmail}>
+                                <TextField name="name" variant="outlined" label="Name" type="text" fullWidth />
+                                <TextField name="email" variant="outlined" label="Email" type="email" fullWidth style={{ marginTop: 20 }} />
+                                <TextField name="message" variant="outlined" label="Message" multiline rows={6} fullWidth style={{ margin: '20px 0' }} />
+                                <Button text="Send" type="submit" />
                             </form>
                         </Grid>
                         <Grid item sm={6} container className={classes.infoContainer}>
