@@ -7,6 +7,7 @@ import AboutPage from './pages/AboutPage/AboutPage';
 import ContactPage from './pages/ContactPage/ContactPage';
 import HomePage from './pages/HomePage/HomePage';
 import ProductPage from './pages/ProductPage/ProductPage';
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 import Footer from './components/Footer/Footer';
 import ClassPage from './pages/ClassPage/ClassPage';
 
@@ -52,6 +53,9 @@ function App() {
                                 </Route>
                                 <Route exact path="/cart">
                                     <CartPage />
+                                </Route>
+                                <Route exact path="/checkout">
+                                    <CheckoutPage />
                                 </Route>
                             </Switch>
                         </main>

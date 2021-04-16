@@ -17,7 +17,7 @@ const NavBar = () => {
         fetchCart().then((cart) => setCart(cart));
     }, []);
 
-    console.log('CART: ', cart);
+    // console.log('CART: ', cart);
 
     return (
         <AppBar color="transparent" className={classes.navbar}>

@@ -44,3 +44,14 @@ export const refreshCart = async () => {
     const newCart = await commerce.cart.refresh();
     return newCart;
 };
+
+export const captureCheckout = async (checkoutTokenId, newOrder) => {
+    const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
+    return incomingOrder;
+};
+
+export const generateToken = async (cartId) => {
+    const token = await commerce.checkout.generateToken(cartId, { type: 'cart' });
+
+    return token;
+};

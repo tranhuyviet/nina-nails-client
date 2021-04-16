@@ -49,7 +49,14 @@ const CartPage = () => {
                                 <Button startIcon={<DeleteOutlinedIcon />} variant="outlined" onClick={handleEmptyCart}>
                                     Empty Cart
                                 </Button>
-                                <Button startIcon={<PaymentOutlinedIcon />} variant="contained" color="primary" style={{ marginLeft: 40 }}>
+                                <Button
+                                    startIcon={<PaymentOutlinedIcon />}
+                                    variant="contained"
+                                    color="primary"
+                                    style={{ marginLeft: 40 }}
+                                    component={Link}
+                                    to="/checkout"
+                                >
                                     Check out
                                 </Button>
                             </Grid>
