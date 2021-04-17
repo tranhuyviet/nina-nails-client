@@ -21,7 +21,7 @@ const CartPage = () => {
     };
 
     if (!cart) return <p>Loading...</p>;
-    console.log('CART PAGE RENDER', cart);
+    // console.log('CART PAGE RENDER', cart);
 
     return (
         <section className={classes.cartPage}>

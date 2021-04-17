@@ -55,3 +55,9 @@ export const generateToken = async (cartId) => {
 
     return token;
 };
+
+export const getLiveToken = async (checkoutTokenId) => {
+    const live = await commerce.checkout.getLive(checkoutTokenId);
+
+    return live;
+};

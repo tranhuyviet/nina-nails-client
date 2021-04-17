@@ -5,7 +5,7 @@ import { useCart } from '../../context';
 import AddressForm from './AddressForm/AddressForm';
 import PaymentForm from './PaymentForm/PaymentForm';
 import { useStyles } from './styles';
-import { refreshCart, captureCheckout, generateToken } from '../../lib/api';
+import { refreshCart, captureCheckout, generateToken, getLiveToken } from '../../lib/api';
 // import { commerce } from '../../lib/commerce';
 
 const steps = ['Shipping address', 'Payment details'];
@@ -32,6 +32,7 @@ const CheckoutPage = () => {
             }
         };
         generateTokenFun();
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -53,21 +54,22 @@ const CheckoutPage = () => {
     const nextStep = () => setActiveStep((prev) => prev + 1);
     const backStep = () => setActiveStep((prev) => prev - 1);
 
-    const next = (data) => {
+    const next = async (data) => {
         setShippingData(data);
+        await getLiveToken(checkoutToken.id);
         nextStep();
     };
 
     const timeout = () => {
         setTimeout(() => {
             setIsFinish(true);
-        }, 5000);
+        }, 8000);
     };
 
     const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
         try {
             const capture = await captureCheckout(checkoutTokenId, newOrder);
-
+            // console.log('capture', capture);
             setOrder(capture);
             setCart(refreshCart());
         } catch (error) {
@@ -116,6 +118,8 @@ const CheckoutPage = () => {
             </Button>
         </>;
     }
+
+    // console.log('checkout token', checkoutToken);
 
     return (
         <>

@@ -16,17 +16,21 @@ const AddressForm = ({ checkoutToken, next }) => {
     const [shippingOption, setShippingOption] = useState('');
 
     const countries = Object.entries(shippingCountries).map(([code, name]) => ({ id: code, label: name }));
-    console.log(countries);
+    // console.log(countries);
 
     const subdivisions = Object.entries(shippingSubdivisions).map(([code, name]) => ({ id: code, label: name }));
-    console.log(subdivisions);
+    // console.log(subdivisions);
 
-    const options = shippingOptions.map((option) => ({ id: option.id, label: `${option.description} - (${option.price.formatted_with_symbol})` }));
-    console.log(options);
+    const options = shippingOptions.map((option) => ({
+        id: option.id,
+        label: `${option.description} - (${option.price.formatted_with_symbol})`,
+        raw: option.price.raw,
+    }));
+    // console.log('shipping option', options);
 
     const fetchShippingCountries = async (checkoutTokenId) => {
         const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
-        console.log(countries);
+        // console.log(countries);
         setShippingCountries(countries);
         setShippingCountry(Object.keys(countries)[0]);
     };
@@ -39,6 +43,7 @@ const AddressForm = ({ checkoutToken, next }) => {
 
     const fetchShippingOptions = async (checkoutTokenId, country, region = null) => {
         const options = await commerce.checkout.getShippingOptions(checkoutTokenId, { country, region });
+        // console.log('shipping option full', options);
         setShippingOptions(options);
         setShippingOption(options[0].id);
     };
@@ -61,7 +66,11 @@ const AddressForm = ({ checkoutToken, next }) => {
                 Shipping Address
             </Typography>
             <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit((data) => next({ ...data, shippingCountry, shippingSubdivision, shippingOption }))}>
+                <form
+                    onSubmit={methods.handleSubmit((data) =>
+                        next({ ...data, shippingCountry, shippingSubdivision, shippingOption, shippingCost: options[0].raw })
+                    )}
+                >
                     <Grid container spacing={3}>
                         <CustomTextField required name="firstName" label="First name" />
                         <CustomTextField required name="lastName" label="Last name" />
@@ -69,6 +78,7 @@ const AddressForm = ({ checkoutToken, next }) => {
                         <CustomTextField required name="email" label="Email" />
                         <CustomTextField required name="city" label="City" />
                         <CustomTextField required name="zip" label="ZIP / Postal code" />
+
                         <Grid item xs={12} sm={6}>
                             <InputLabel>Shipping Country</InputLabel>
                             <Select fullWidth value={shippingCountry} onChange={(e) => setShippingCountry(e.target.value)}>
@@ -98,7 +108,9 @@ const AddressForm = ({ checkoutToken, next }) => {
                                     </MenuItem>
                                 ))}
                             </Select>
+                            {/* <Typography>{`Shipping Cost: ${options[0].raw}`}</Typography> */}
                         </Grid>
+                        <CustomTextField name="vat" label="VAT Number" />
                     </Grid>
                     <br />
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
