@@ -33,14 +33,15 @@ const Review = ({ checkoutToken, shippingData }) => {
                         //     );
                         // }
                     ))}
-                    <ListItem style={{ padding: '10px 0 2px 0' }}>
-                        <ListItemText primary="VAT (21%)" />
-                        <Typography variant="subtitle1">{`€${checkoutToken.live.tax.amount.raw}`}</Typography>
-                    </ListItem>
 
                     <ListItem style={{ padding: '0px 0 2px 0' }}>
                         <ListItemText primary="Shipping Cost" />
                         <Typography variant="subtitle1">{`€${shippingData.shippingCost}`}</Typography>
+                    </ListItem>
+
+                    <ListItem style={{ padding: '10px 0 2px 0' }}>
+                        <ListItemText primary="VAT (21%)" />
+                        <Typography variant="subtitle1">{`€${checkoutToken.live.tax.amount.raw}`}</Typography>
                     </ListItem>
 
                     <ListItem style={{ padding: '0 0 5px 0' }}>

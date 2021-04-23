@@ -17,22 +17,27 @@ const PaymentForm = ({ shippingData, checkoutToken, backStep, nextStep, handleCa
     // }
 
     // console.log('Taxt total', taxTotal.toFixed(2));
+    const taxShipping = (shippingData.shippingCost * 0.21).toFixed(2) * 1;
     let taxTotal = 0;
     if (shippingData.vat || shippingData.vat.length > 0) {
     } else {
         checkoutToken.live.line_items.map((item) => {
-            const tax = item.line_total.raw * 0.21;
+            const tax = item.line_total.raw * 0.21 * 1;
+
             item.line_total.raw = item.line_total.raw + tax;
             item.price.raw = item.price.raw = tax;
             item.tax.amount = tax;
             taxTotal += tax;
             // total += item.line_total.raw;
         });
-        checkoutToken.live.tax.amount.raw = taxTotal.toFixed(2);
+
+        taxTotal = taxTotal.toFixed(2) * 1;
+        console.log(taxShipping, taxTotal);
+        checkoutToken.live.tax.amount.raw = (taxTotal + taxShipping).toFixed(2);
         // checkoutToken.live.total.raw = (total + shippingData.shippingCost).toFixed(2);
     }
-
-    checkoutToken.live.total.raw = checkoutToken.live.total.raw + taxTotal + shippingData.shippingCost;
+    let totalPay = (checkoutToken.live.total.raw + taxTotal + shippingData.shippingCost + taxShipping) * 1;
+    checkoutToken.live.total.raw = totalPay.toFixed(2);
 
     // console.log('checkout Token updated', checkoutToken, taxTotal, checkoutToken.live.total.raw);
     const handleSubmit = async (event, elements, stripe) => {
@@ -75,6 +80,8 @@ const PaymentForm = ({ shippingData, checkoutToken, backStep, nextStep, handleCa
             taxTotal = 0;
         }
     };
+
+    console.log(checkoutToken);
 
     return (
         <>
